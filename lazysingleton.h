@@ -1,16 +1,10 @@
-﻿//
-// Author:   Xuzzl
-// Time:     2022/12/08
-// Describe: 懒汉单例模式 - 两种
-//
-#ifndef LAZYSINGLETON_H
-#define LAZYSINGLETON_H
+﻿#pragma once
 
 #include <QObject>
 #include <QDebug>
 #include <QMutex>
 
-// 检查锁模式
+// 单例模式 - 懒汉 - 检查锁模式
 class LazySingleton
 {
 public:
@@ -30,29 +24,36 @@ public:
         }
         return instance;
     };
-    static void delInstance() {
-        if(instance != nullptr) {
+
+    static void delInstance()
+	{
+        if(instance != nullptr) 
+		{
             delete instance;
             instance = nullptr;
         }
     };
 
 private:
-    LazySingleton(){
+    LazySingleton()
+	{
         qDebug() << "LazySingleton Hello";
     };
-    ~LazySingleton(){
-        // 私有化 可以避免 直接 delete s1 ，必须 使用 delInstance
+
+    ~LazySingleton()
+	{
+        // 私有化 可以避免直接 delete s1 ，必须 使用 delInstance
         qDebug() << "LazySingleton Bye";
     };
-    LazySingleton(const LazySingleton &other); //拷贝构造函数
-    LazySingleton &operator = (const LazySingleton &other); //赋值运算操作符
+    LazySingleton(const LazySingleton &other);				// 拷贝构造函数
+    LazySingleton &operator= (const LazySingleton &other);	// 赋值运算操作符
 
     // static对象，可以保证对象只生成一次
     static LazySingleton *instance;
     static QMutex m_mutex;
 };
-
+LazySingleton* LazySingleton::instance = nullptr;
+QMutex LazySingleton::m_mutex;
 
 // static变量模式
 class LazySingleton2 {
@@ -71,5 +72,3 @@ private:
         qDebug() << "LazySingleton2 Bye";
     };
 };
-
-#endif // LAZYSINGLETON_H
