@@ -87,5 +87,3 @@ namespace Cosmos
 		vector<std::shared_future<void>> m_voidGroup;
 	};
 }
-
-

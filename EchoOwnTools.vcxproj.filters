@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Header Files\3rdParty">
+      <UniqueIdentifier>{ce7febe2-9078-4272-b7e3-9c23e4ed9a1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3rdParty\taskParty">
+      <UniqueIdentifier>{ae12b591-ea55-4a2c-ad55-dd7a8fb7f526}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="EchoOwnTools.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="EchoOwnTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main_color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="EchoOwnTools.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="3rdParty\taskParty\ParallelAlgrithm.hpp">
+      <Filter>Header Files\3rdParty\taskParty</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\taskParty\Task.hpp">
+      <Filter>Header Files\3rdParty\taskParty</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\taskParty\TaskCpp.h">
+      <Filter>Header Files\3rdParty\taskParty</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\taskParty\TaskGroup.hpp">
+      <Filter>Header Files\3rdParty\taskParty</Filter>
+    </ClInclude>
+    <ClInclude Include="3rdParty\taskParty\When_All_Any.hpp">
+      <Filter>Header Files\3rdParty\taskParty</Filter>
+    </ClInclude>
+    <ClInclude Include="lazysingleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="EchoOwnTools.ui">
+      <Filter>Resource Files</Filter>
+    </QtUic>
+  </ItemGroup>
+</Project>

@@ -87,7 +87,6 @@
     <QtUic Include="EchoOwnTools.ui" />
     <QtMoc Include="EchoOwnTools.h" />
     <ClCompile Include="EchoOwnTools.cpp" />
-    <ClCompile Include="lazysingleton.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>

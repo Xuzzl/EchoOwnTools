@@ -73,7 +73,6 @@ void EchoOwnTools::onTextEditValueChanged()
 }
 
 
-
 void EchoOwnTools::on_LazySingleton_clicked()
 {
 
