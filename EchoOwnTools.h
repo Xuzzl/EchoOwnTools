@@ -6,7 +6,7 @@
 #include <QComboBox>
 #include "ui_EchoOwnTools.h"
 
-#include "lazysingleton.h"
+//#include "lazysingleton.h"
 
 class EchoOwnTools : public QMainWindow
 {

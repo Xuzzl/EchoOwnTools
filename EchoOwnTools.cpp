@@ -43,16 +43,16 @@ EchoOwnTools::~EchoOwnTools()
 
 void EchoOwnTools::onPushButtonClicked()
 {
-	QPushButton* _cur_senser = static_cast<QPushButton*>(sender());
-	if (nullptr == _cur_senser)
-	{
-		return;
-	}
+	//QPushButton* _cur_senser = static_cast<QPushButton*>(sender());
+	//if (nullptr == _cur_senser)
+	//{
+	//	return;
+	//}
 
-	if (ui.LazySingleton == _cur_senser)
-	{
-		on_LazySingleton_clicked();
-	}
+	//if (ui.LazySingleton == _cur_senser)
+	//{
+	//	on_LazySingleton_clicked();
+	//}
 
 
 }

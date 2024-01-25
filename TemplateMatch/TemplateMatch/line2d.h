@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include <iostream>
 #include "fusion.h"
@@ -83,7 +83,7 @@ namespace shape_info
 			}
 			return infos;
 		}
-		// Éú³ÉÃ¿¸ö½Ç¶ÈÓëĞı×ªµÄÄ£°åĞÅÏ¢
+		// ç”Ÿæˆæ¯ä¸ªè§’åº¦ä¸æ—‹è½¬çš„æ¨¡æ¿ä¿¡æ¯
 		void produce_infos()
 		{
 			infos.clear();
@@ -108,13 +108,13 @@ namespace shape_info
 				}
 			}
 		}
-		// ÎªÃ¿¸ö½Ç¶ÈµÄĞı×ªºÍÆ½ÒÆ×÷×ª»»
+		// ä¸ºæ¯ä¸ªè§’åº¦çš„æ—‹è½¬å’Œå¹³ç§»ä½œè½¬æ¢
 		static cv::Mat transform(cv::Mat& src, int angle, double scale)
 		{
 			cv::Size image_size;
 			cv::Mat rotate_matrix;
 			getRotateTransform(src, angle, scale, image_size, rotate_matrix, true);
-			// ·ÂÉä±ä»»
+			// ä»¿å°„å˜æ¢
 			cv::Mat output_image;
 			cv::warpAffine(src, output_image, rotate_matrix, image_size);
 			return output_image;
@@ -133,8 +133,8 @@ namespace shape_info
 			/*cv::Rect boundingImage(0, 0, inputImage.cols, inputImage.rows);
 			int x, y, w, h;*/
 
-			// »ñÈ¡Ğı×ª¾ØÕó
-			// opencv µÄ½Ç¶ÈÕı·½ÏòÊÇÄæÊ±ÕëĞı×ª£¬Òò´Ë¼Ó¸ö"-"ºÅ£¬Íâ²¿µ÷ÓÃº¯Êı¾ÍÊÇ½Ç¶ÈÕı¶ÔÓ¦Ë³Ê±ÕëĞı×ª
+			// è·å–æ—‹è½¬çŸ©é˜µ
+			// opencv çš„è§’åº¦æ­£æ–¹å‘æ˜¯é€†æ—¶é’ˆæ—‹è½¬ï¼Œå› æ­¤åŠ ä¸ª"-"å·ï¼Œå¤–éƒ¨è°ƒç”¨å‡½æ•°å°±æ˜¯è§’åº¦æ­£å¯¹åº”é¡ºæ—¶é’ˆæ—‹è½¬
 			cv::Mat rotateMatrixIn = cv::getRotationMatrix2D(cv::Point2f(inputImage.cols / 2, inputImage.rows / 2), -rotateDeg, scale);
 
 			if (!changeSize) {
@@ -143,7 +143,7 @@ namespace shape_info
 				return;
 			}
 
-			// ¶¨ÒåÍ¼ÏñËÄ¸ö½ÇµãÊı¾İ
+			// å®šä¹‰å›¾åƒå››ä¸ªè§’ç‚¹æ•°æ®
 			cv::Mat ptsImageCorner = cv::Mat::zeros(4, 3, CV_64FC1);
 			ptsImageCorner.at<double>(0, 2) = 1;
 			ptsImageCorner.at<double>(1, 0) = inputImage.cols;
@@ -154,10 +154,10 @@ namespace shape_info
 			ptsImageCorner.at<double>(3, 1) = inputImage.rows;
 			ptsImageCorner.at<double>(3, 2) = 1;
 
-			// Ğı×ªÖ®ºóµÄËÄ¸ö½Çµã
+			// æ—‹è½¬ä¹‹åçš„å››ä¸ªè§’ç‚¹
 			cv::Mat vector_rotated = (rotateMatrixIn * (ptsImageCorner.t())).t();
 
-			//ÕÒµ½×îĞ¡×î´óµÄxy
+			//æ‰¾åˆ°æœ€å°æœ€å¤§çš„xy
 			int x_index = 0, y_index = 1;
 			float
 				x_min = vector_rotated.at<double>(0, x_index),
@@ -180,7 +180,7 @@ namespace shape_info
 				}
 			}
 
-			// ¸üĞÂĞı×ªºóµÄÍ¼Ïñ³ß´çÓëĞı×ª¾ØÕó
+			// æ›´æ–°æ—‹è½¬åçš„å›¾åƒå°ºå¯¸ä¸æ—‹è½¬çŸ©é˜µ
 			cv::Size imageSizeModify(x_max - x_min, y_max - y_min);
 			cv::Mat rotateMatrixModify(rotateMatrixIn);
 			rotateMatrixModify.at<double>(x_index, 2) -= x_min;
@@ -206,8 +206,8 @@ namespace line2Dup
 	{
 		int x;
 		int y;
-		int label; // Á¿»¯·½Ïò
-		float theta; // Ìİ¶È·½Ïò
+		int label; // é‡åŒ–æ–¹å‘
+		float theta; // æ¢¯åº¦æ–¹å‘
 
 		void read(const cv::FileNode& fn)
 		{
@@ -222,10 +222,10 @@ namespace line2Dup
 
 	struct Template
 	{
-		int width;	// ×î´óx - ×îĞ¡x×ø±ê
-		int height;	// ×î´óy - ×îĞ¡y×ø±ê
-		int tl_x;	// ×îĞ¡x×ø±ê
-		int tl_y;	// ×îĞ¡y×ø±ê
+		int width;	// æœ€å¤§x - æœ€å°xåæ ‡
+		int height;	// æœ€å¤§y - æœ€å°yåæ ‡
+		int tl_x;	// æœ€å°xåæ ‡
+		int tl_y;	// æœ€å°yåæ ‡
 		int pyramid_level;
 		int idx = 0;
 		std::vector<Feature> features;
@@ -269,18 +269,18 @@ namespace line2Dup
 		size_t num_features;
 		int pyramid_level;
 		int extract_kernel;
-		float weak_threshold;	// Ö»ÓĞÌİ¶È·ùÖµ¸ßÓÚ´ËÖµµÄÆ½·½µÄµã²Å»á±»Á¿»¯
-		float strong_threshold;	// ºòÑ¡µãÌİ¶È·ùÖµ±ØĞë´óÓÚ´ËÖµµÄÆ½·½
+		float weak_threshold;	// åªæœ‰æ¢¯åº¦å¹…å€¼é«˜äºæ­¤å€¼çš„å¹³æ–¹çš„ç‚¹æ‰ä¼šè¢«é‡åŒ–
+		float strong_threshold;	// å€™é€‰ç‚¹æ¢¯åº¦å¹…å€¼å¿…é¡»å¤§äºæ­¤å€¼çš„å¹³æ–¹
 
 		cv::Mat src;
 		cv::Mat mask;
-		cv::Mat angle;			// 0-128µÄÁ¿»¯·½ÏòÍ¼
-		cv::Mat magnitude;		// sobelÌİ¶ÈÍ¼
-		cv::Mat angle_ori;		// Ìİ¶È·½ÏòÍ¼
+		cv::Mat angle;			// 0-128çš„é‡åŒ–æ–¹å‘å›¾
+		cv::Mat magnitude;		// sobelæ¢¯åº¦å›¾
+		cv::Mat angle_ori;		// æ¢¯åº¦æ–¹å‘å›¾
 
 		ColorGradientPyramid(const cv::Mat& src, const cv::Mat& mask, float weak_threshold, size_t num_features, float strong_threshold, int extract_kernel);
 
-		// ´øÓĞ·ÖÊıµÄºòÑ¡ÌØÕ÷µã
+		// å¸¦æœ‰åˆ†æ•°çš„å€™é€‰ç‰¹å¾ç‚¹
 		struct Candidate
 		{
 			float score;
@@ -290,15 +290,15 @@ namespace line2Dup
 
 			Candidate(int x, int y, int label, float _score) : f(x, y, label), score(_score) {}
 		};
-		// ·µ»Øµ±Ç°½ğ×ÖËş²ã¶ÔÓ¦µÄÁ¿»¯Ìİ¶È·½ÏòÍ¼(angle)¹©Ìİ¶ÈÀ©É¢Ê¹ÓÃ
+		// è¿”å›å½“å‰é‡‘å­—å¡”å±‚å¯¹åº”çš„é‡åŒ–æ¢¯åº¦æ–¹å‘å›¾(angle)ä¾›æ¢¯åº¦æ‰©æ•£ä½¿ç”¨
 		void quantize(cv::Mat& dst) const;
-		// ½ğ×ÖËşÏÂ²ÉÑù´¦Àí
+		// é‡‘å­—å¡”ä¸‹é‡‡æ ·å¤„ç†
 		void pyrDown();
-		// Á¿»¯Ìİ¶È·½ÏòÍ¼Óë·ùÖµÍ¼µÄ¼ÆËã
+		// é‡åŒ–æ¢¯åº¦æ–¹å‘å›¾ä¸å¹…å€¼å›¾çš„è®¡ç®—
 		void update();
-		// Éú³Éµ±Ç°½ğ×ÖËş²ã¶ÔÓ¦µÄÄ£°å
+		// ç”Ÿæˆå½“å‰é‡‘å­—å¡”å±‚å¯¹åº”çš„æ¨¡æ¿
 		bool extractTemplate(Template& templ) const;
-		// ´ÓºòÑ¡ÌØÕ÷µãÖĞÉ¸Ñ¡Ïà»¥¾àÀë×ã¹»µÄÌØÕ÷µã
+		// ä»å€™é€‰ç‰¹å¾ç‚¹ä¸­ç­›é€‰ç›¸äº’è·ç¦»è¶³å¤Ÿçš„ç‰¹å¾ç‚¹
 		static bool selectScatteredFeatures(const std::vector<Candidate>& candidates, std::vector<Feature>& features, size_t num_features, float distance);
 	};
 
@@ -333,7 +333,7 @@ namespace line2Dup
 		}
 	};
 
-	// Ö÷ÒªÔÚfusionÖĞÊ¹ÓÃ
+	// ä¸»è¦åœ¨fusionä¸­ä½¿ç”¨
 	struct FilterNode
 	{
 		std::vector<cv::Mat> buffers;
@@ -343,7 +343,7 @@ namespace line2Dup
 		int padded_rows = 0;
 		int padded_cols = 0;
 
-		// Ãªµã£ºÆäÖĞtopleftÎªÍêÕûimg
+		// é”šç‚¹ï¼šå…¶ä¸­topleftä¸ºå®Œæ•´img
 		int anchor_row = 0;  // anchor: where topleft is in full img
 		int anchor_col = 0;
 
@@ -356,7 +356,7 @@ namespace line2Dup
 		int op_r, op_c;
 
 		int simd_step = mipp::N<int16_t>();
-		// Ê¹ÓÃSIMDµÄ¿ª¹Ø
+		// ä½¿ç”¨SIMDçš„å¼€å…³
 		bool use_simd = true;
 
 		template <class T>
@@ -371,7 +371,7 @@ namespace line2Dup
 		std::function<int(int, int, int, int)> simple_update;
 		std::function<int(int, int, int, int)> simd_update;
 
-		// calculate paddings ¼ÆËãÌî³ä(?)
+		// calculate paddings è®¡ç®—å¡«å……(?)
 		void backward_rc(std::vector<FilterNode>& nodes, int rows, int cols, int cur_padded_rows, int cur_padded_cols)
 		{
 			if (rows > buffer_rows) {
@@ -395,7 +395,7 @@ namespace line2Dup
 		float similarity;
 		std::string class_id;
 
-		// ÖØÔØ< ÅÅĞòÆ¥Åä, ½«ÏàËÆ¶È¸ßµÄÅÅÔÚÇ°Ãæ
+		// é‡è½½< æ’åºåŒ¹é…, å°†ç›¸ä¼¼åº¦é«˜çš„æ’åœ¨å‰é¢
 		bool operator<(const Match& rhs) const {
 			if (similarity != rhs.similarity)
 				return similarity > rhs.similarity;
@@ -494,7 +494,7 @@ namespace line2Dup
 
 		std::vector<Template> getTemplates(const std::string& class_id, int template_id) const;
 
-		// »ñÈ¡Ã¿Ò»´ÎĞı×ªÓëËõ·ÅºóµÄÍ¼Æ¬µÄÌØÕ÷µã¼¯ºÍ×ø±ê£¬´æÈëÄ£°åÖĞ
+		// è·å–æ¯ä¸€æ¬¡æ—‹è½¬ä¸ç¼©æ”¾åçš„å›¾ç‰‡çš„ç‰¹å¾ç‚¹é›†å’Œåæ ‡ï¼Œå­˜å…¥æ¨¡æ¿ä¸­
 		int addTemplate(shape_info::ShapeInfo& shapes, const std::string& class_id, std::vector<shape_info::ShapeInfo::Info>& infos);
 
 		struct TemplateParams
@@ -513,7 +513,7 @@ namespace line2Dup
 		struct TemplateInfos
 		{
 			std::string template_id;
-			std::vector<shape_info::ShapeInfo::Info> shape_infos;	// Ä£°åÊı¾İ£¨½Ç¶ÈºÍ³ß¶È£©
+			std::vector<shape_info::ShapeInfo::Info> shape_infos;	// æ¨¡æ¿æ•°æ®ï¼ˆè§’åº¦å’Œå°ºåº¦ï¼‰
 			cv::Mat image;
 			cv::Mat mask;
 			TemplateParams params;
@@ -526,7 +526,7 @@ namespace line2Dup
 
 		TemplateParams getParam(std::string id) const;
 
-		// ÓÃÓÚ¹ıÂËÈõÆ¥Åä
+		// ç”¨äºè¿‡æ»¤å¼±åŒ¹é…
 		struct MatchPredicate
 		{
 			float threshold;
@@ -537,7 +537,7 @@ namespace line2Dup
 		void getMatches(const LinearMemoryPyramid& lm_pyramid, const std::vector<cv::Size>& sizes, float threshold, std::vector<Match>& matches, const std::string& class_id, const std::vector<TemplatePyramid>& template_pyramids) const;
 
 	public:
-		// fusion Ïà¹Ø²ÎÊı
+		// fusion ç›¸å…³å‚æ•°
 		bool set_produce_dxy = false;
 		cv::Mat dx_, dy_;
 		std::vector<std::vector<char>> fusion_buffers;
@@ -554,11 +554,11 @@ namespace line2Dup
 		bool setTatlevel(int level);
 
 	public:
-		TemplatesMap class_templates;		// Ä£°åÊı¾İ£¨ÌØÕ÷µãx¡¢y¡¢feature µÈÊı¾İ£©
+		TemplatesMap class_templates;		// æ¨¡æ¿æ•°æ®ï¼ˆç‰¹å¾ç‚¹xã€yã€feature ç­‰æ•°æ®ï¼‰
 		std::vector<TemplateInfos> template_infos;
 
-		cv::Ptr<ColorGradient> modality;	// Ä£°åÌØÕ÷ ×¢Òâ¼æÈİ¶àÄ£°å
-		float res_map_mag_thresh = 60.0f;	// Ç¿ãĞÖµ
+		cv::Ptr<ColorGradient> modality;	// æ¨¡æ¿ç‰¹å¾ æ³¨æ„å…¼å®¹å¤šæ¨¡æ¿
+		float res_map_mag_thresh = 60.0f;	// å¼ºé˜ˆå€¼
 		int extract_kernel = 5;
 
 		std::vector<int> T_at_level;
