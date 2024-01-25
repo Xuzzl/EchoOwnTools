@@ -2,11 +2,6 @@
 
 #include <iostream>
 #include "fusion.h"
-#include "MIPP/mipp.h"
-
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
 
 #include <map>
 #include <mutex>
@@ -14,6 +9,8 @@
 #include <functional>
 #include <algorithm>
 #include <qcoreapplication.h>
+
+
 
 namespace shape_info
 {
